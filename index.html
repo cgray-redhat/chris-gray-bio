@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chris Gray — Vice President of Renewals, Dealmaking, and Enterprise Ecosystem at Red Hat">
+  <title>Chris Gray | Portfolio</title>
+  <style>
+    :root {
+      --charcoal: #1e1e1e;
+      --charcoal-light: #2d2d2d;
+      --slate: #4a5568;
+      --muted: #64748b;
+      --text: #1a2332;
+      --text-inverse: #f8fafc;
+      --bg: #ffffff;
+      --bg-alt: #f1f5f9;
+      --blue: #1e4d7b;
+      --blue-light: #2b6cb0;
+      --accent: #cc0000;
+      --accent-hover: #a30000;
+      --border: #e2e8f0;
+      --shadow: 0 4px 24px rgba(30, 30, 30, 0.08);
+      --radius: 8px;
+      --nav-height: 4rem;
+      --max-width: 72rem;
+      --transition: 0.2s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--blue-light);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover {
+      color: var(--blue);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 42rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav__brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      white-space: nowrap;
+    }
+
+    .nav__brand span {
+      color: var(--accent);
+    }
+
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .nav__menu {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav__menu a {
+      display: block;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--slate);
+      border-radius: var(--radius);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .nav__menu a:hover,
+    .nav__menu a:focus-visible {
+      background: var(--bg-alt);
+      color: var(--charcoal);
+      outline: none;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 55%, #1a3a5c 100%);
+      color: var(--text-inverse);
+      padding: clamp(3rem, 8vw, 5rem) 1.5rem;
+    }
+
+    .hero__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      align-items: center;
+    }
+
+    .hero__image-wrap {
+      position: relative;
+      width: clamp(10rem, 28vw, 14rem);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.15);
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+    }
+
+    .hero__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: var(--charcoal-light);
+    }
+
+    .hero__image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--charcoal-light);
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .hero__greeting {
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(248, 250, 252, 0.75);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero__name {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero__title {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      color: rgba(248, 250, 252, 0.9);
+      max-width: 36rem;
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      text-decoration: none;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--blue-light);
+      outline-offset: 2px;
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background: var(--accent-hover);
+      color: #fff;
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--text-inverse);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .btn--outline:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .btn svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      fill: currentColor;
+    }
+
+    /* Sections */
+    .section {
+      padding: clamp(3rem, 7vw, 5rem) 1.5rem;
+    }
+
+    .section--alt {
+      background: var(--bg-alt);
+    }
+
+    .section__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section__header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* About */
+    .about__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .about__card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .section--alt .about__card {
+      background: var(--bg);
+    }
+
+    .about__card h3 {
+      font-size: 1rem;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .about__card p {
+      color: var(--slate);
+      font-size: 0.98rem;
+    }
+
+    .about__card p + p {
+      margin-top: 0.75rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      list-style: none;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0.35rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--blue-light));
+      border-radius: 2px;
+    }
+
+    .timeline__item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+
+    .timeline__item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline__item::before {
+      content: "";
+      position: absolute;
+      left: -1.65rem;
+      top: 0.45rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 0 3px var(--bg-alt);
+    }
+
+    .timeline__period {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline__role {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline__org {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline__desc {
+      color: var(--slate);
+      font-size: 0.98rem;
+    }
+
+    /* Education */
+    .education__list {
+      display: grid;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .education__item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .section--alt .education__item {
+      background: var(--bg);
+    }
+
+    .education__icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .education__degree {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .education__school {
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .education__detail {
+      color: var(--slate);
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: rgba(204, 0, 0, 0.1);
+      color: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* Footer / Connect */
+    .footer {
+      background: var(--charcoal);
+      color: rgba(248, 250, 252, 0.85);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer h2 {
+      color: var(--text-inverse);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      border: none;
+      padding: 0;
+    }
+
+    .footer p {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .footer__social {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .footer__copy {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: rgba(248, 250, 252, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav__toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav__menu {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 0.75rem 1rem 1rem;
+        gap: 0;
+        display: none;
+        box-shadow: var(--shadow);
+      }
+
+      .nav__menu.is-open {
+        display: flex;
+      }
+
+      .nav__menu a {
+        width: 100%;
+        padding: 0.75rem 1rem;
+      }
+
+      .hero__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero__image-wrap {
+        margin: 0 auto;
+      }
+
+      .hero__actions {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .education__item {
+        grid-template-columns: 1fr;
+      }
+
+      .education__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav__inner">
+        <a href="#" class="nav__brand">Chris <span>Gray</span></a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#connect">Connect</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-heading">
+      <div class="hero__inner">
+        <div class="hero__image-wrap">
+          <img
+            class="hero__image"
+            src="profile.jpg"
+            alt="Portrait of Chris Gray"
+            width="224"
+            height="224"
+          >
+          <div class="hero__image-placeholder" hidden>
+            Add profile.jpg
+          </div>
+        </div>
+        <div class="hero__content">
+          <p class="hero__greeting">Hello, I'm</p>
+          <h1 class="hero__name" id="hero-heading">Chris Gray</h1>
+          <p class="hero__title">
+            Vice President of Renewals, Dealmaking, and Enterprise Ecosystem at Red Hat
+          </p>
+          <div class="hero__actions">
+            <a
+              class="btn btn--primary"
+              href="https://www.linkedin.com/in/chris-gray-redhat/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a class="btn btn--outline" href="#experience">View Experience</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2 id="about-heading">About Me</h2>
+        </header>
+        <p class="section-intro">
+          Technology executive with deep roots at Red Hat and a foundation of service in the U.S. Navy—bringing together enterprise ecosystem strategy, customer success, and technical leadership.
+        </p>
+        <div class="about__grid">
+          <article class="about__card">
+            <h3>Current Role</h3>
+            <p>
+              Leading Renewals, Dealmaking, and Enterprise Ecosystem at Red Hat. Previously led North America's Synergy efforts, NA Partner Ecosystem, and Global Customer Success.
+            </p>
+          </article>
+          <article class="about__card">
+            <h3>Red Hat Journey</h3>
+            <p>
+              Joined Red Hat in 2008 in Inside Sales, later building the Subscription Education &amp; Awareness, Embedded, IoT / Edge, and ISV GTM teams.
+            </p>
+          </article>
+          <article class="about__card">
+            <h3>Military Service</h3>
+            <p>
+              Former Officer in the U.S. Navy, serving aboard ballistic missile submarines—experience that shaped disciplined leadership and operational excellence.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="experience" aria-labelledby="experience-heading">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2 id="experience-heading">Experience</h2>
+        </header>
+        <p class="section-intro">
+          A career spanning open-source enterprise leadership, partner ecosystem growth, and national security service.
+        </p>
+        <ol class="timeline">
+          <li class="timeline__item">
+            <p class="timeline__period">Present</p>
+            <h3 class="timeline__role">Vice President, Renewals, Dealmaking &amp; Enterprise Ecosystem</h3>
+            <p class="timeline__org">Red Hat</p>
+            <p class="timeline__desc">
+              Leading Renewals, Dealmaking, and Enterprise Ecosystem. Previously led NA's Synergy efforts, NA Partner Ecosystem, and Global Customer Success.
+            </p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__period">Career Growth</p>
+            <h3 class="timeline__role">GTM &amp; Ecosystem Leadership</h3>
+            <p class="timeline__org">Red Hat</p>
+            <p class="timeline__desc">
+              Built and led teams across Subscription Education &amp; Awareness, Embedded, IoT / Edge, and ISV go-to-market—expanding Red Hat's reach across emerging technology segments.
+            </p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__period">2008 — Early Career</p>
+            <h3 class="timeline__role">Inside Sales</h3>
+            <p class="timeline__org">Red Hat</p>
+            <p class="timeline__desc">
+              Joined Red Hat in 2008, beginning a long tenure that grew from inside sales into successive leadership roles across the organization.
+            </p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__period">Prior Service</p>
+            <h3 class="timeline__role">Officer, U.S. Navy</h3>
+            <p class="timeline__org">Ballistic Missile Submarines</p>
+            <p class="timeline__desc">
+              Served as a commissioned officer aboard ballistic missile submarines, developing expertise in nuclear operations and high-stakes team leadership.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="education" aria-labelledby="education-heading">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2 id="education-heading">Education &amp; Certifications</h2>
+        </header>
+        <p class="section-intro">
+          Academic and professional credentials grounded in computer science, engineering management, and nuclear engineering.
+        </p>
+        <ul class="education__list">
+          <li class="education__item">
+            <div class="education__icon" aria-hidden="true">USNA</div>
+            <div>
+              <h3 class="education__degree">B.S. Computer Science</h3>
+              <p class="education__school">United States Naval Academy</p>
+              <p class="education__detail">Graduated with distinction.</p>
+              <span class="badge">With Distinction</span>
+            </div>
+          </li>
+          <li class="education__item">
+            <div class="education__icon" aria-hidden="true">ODU</div>
+            <div>
+              <h3 class="education__degree">M.S. Engineering Management</h3>
+              <p class="education__school">Old Dominion University</p>
+              <p class="education__detail">Advanced study in engineering leadership and program management.</p>
+            </div>
+          </li>
+          <li class="education__item">
+            <div class="education__icon" aria-hidden="true">DOE</div>
+            <div>
+              <h3 class="education__degree">Certified Nuclear Engineer</h3>
+              <p class="education__school">U.S. Department of Energy</p>
+              <p class="education__detail">Department of Energy certified nuclear engineer.</p>
+              <span class="badge">Certification</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="connect">
+    <div class="footer__inner">
+      <h2>Connect</h2>
+      <p>Interested in connecting? Reach out on LinkedIn.</p>
+      <div class="footer__social">
+        <a
+          class="btn btn--primary"
+          href="https://www.linkedin.com/in/chris-gray-redhat/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn Profile
+        </a>
+        <!-- Additional social links placeholder -->
+        <!-- <a class="btn btn--outline" href="#" aria-label="Email">Email</a> -->
+      </div>
+      <p class="footer__copy">&copy; <span id="year"></span> Chris Gray. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector(".nav__toggle");
+    const menu = document.getElementById("nav-menu");
+
+    toggle.addEventListener("click", () => {
+      const open = menu.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open);
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const profileImg = document.querySelector(".hero__image");
+    const placeholder = document.querySelector(".hero__image-placeholder");
+    profileImg.addEventListener("error", () => {
+      profileImg.style.display = "none";
+      placeholder.hidden = false;
+      placeholder.style.display = "flex";
+    });
+  </script>
+</body>
+</html>
