@@ -79,6 +79,164 @@
       margin-bottom: 2.5rem;
     }
 
+    /* Tab navigation */
+    .tab-header {
+      position: sticky;
+      top: 0;
+      z-index: 110;
+      background: var(--charcoal);
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .tab-header__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 3.5rem;
+    }
+
+    .tab-header__brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-inverse);
+      white-space: nowrap;
+    }
+
+    .tab-header__brand span {
+      color: var(--accent);
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: rgba(248, 250, 252, 0.75);
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: color var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .tab-btn:hover {
+      color: var(--text-inverse);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .tab-btn:focus-visible {
+      outline: 2px solid var(--text-inverse);
+      outline-offset: 2px;
+    }
+
+    .tab-btn--active {
+      color: var(--text-inverse);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    #game-tab {
+      display: none;
+      background: #0a0a0a;
+      min-height: calc(100vh - 3.5rem);
+      padding: 2rem 1rem 3rem;
+    }
+
+    .game-wrap {
+      max-width: 32rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .game-instructions {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .game-stage {
+      position: relative;
+      display: inline-block;
+      border: 3px solid #333;
+      border-radius: 4px;
+      box-shadow: 0 0 40px rgba(204, 0, 0, 0.15);
+    }
+
+    #game-canvas {
+      display: block;
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      background: #000;
+      image-rendering: pixelated;
+    }
+
+    .game-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.82);
+      color: #fff;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .game-overlay[hidden] {
+      display: none;
+    }
+
+    .game-overlay__title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .game-overlay__score {
+      font-size: 1rem;
+      color: #e2e8f0;
+    }
+
+    .game-restart {
+      margin-top: 0.5rem;
+      padding: 0.65rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    .game-restart:hover {
+      background: var(--accent-hover);
+    }
+
+    .game-restart:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
     /* Navigation */
     .nav {
       position: sticky;
@@ -501,6 +659,21 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .tab-header__inner {
+        flex-wrap: wrap;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+
+      .tab-nav {
+        width: 100%;
+      }
+
+      .tab-btn {
+        flex: 1;
+        text-align: center;
+      }
+
       .nav__toggle {
         display: flex;
         align-items: center;
@@ -557,6 +730,17 @@
   </style>
 </head>
 <body>
+  <header class="tab-header">
+    <div class="tab-header__inner">
+      <p class="tab-header__brand">Chris <span>Gray</span></p>
+      <nav class="tab-nav" aria-label="Page tabs">
+        <button type="button" class="tab-btn tab-btn--active" data-tab="bio-tab" aria-selected="true">About Me</button>
+        <button type="button" class="tab-btn" data-tab="game-tab" aria-selected="false">Arcade Game</button>
+      </nav>
+    </div>
+  </header>
+
+  <section id="bio-tab">
   <header>
     <nav class="nav" aria-label="Main navigation">
       <div class="nav__inner">
@@ -749,6 +933,23 @@
       <p class="footer__copy">&copy; <span id="year"></span> Chris Gray. All rights reserved.</p>
     </div>
   </footer>
+  </section>
+
+  <section id="game-tab" aria-label="Arcade Game">
+    <div class="game-wrap">
+      <p class="game-instructions">
+        Move with <strong>← →</strong> or <strong>A / D</strong> · Fire with <strong>Space</strong> · Destroy the alien formation before they reach you
+      </p>
+      <div class="game-stage">
+        <canvas id="game-canvas" width="480" height="600" aria-label="Galaga-style space shooter"></canvas>
+        <div id="game-overlay" class="game-overlay" hidden>
+          <h2 class="game-overlay__title">Game Over</h2>
+          <p class="game-overlay__score">Final Score: <span id="final-score">0</span></p>
+          <button type="button" class="game-restart" id="game-restart">Restart</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -770,11 +971,430 @@
 
     const profileImg = document.querySelector(".hero__image");
     const placeholder = document.querySelector(".hero__image-placeholder");
-    profileImg.addEventListener("error", () => {
-      profileImg.style.display = "none";
-      placeholder.hidden = false;
-      placeholder.style.display = "flex";
+    if (profileImg) {
+      profileImg.addEventListener("error", () => {
+        profileImg.style.display = "none";
+        placeholder.hidden = false;
+        placeholder.style.display = "flex";
+      });
+    }
+
+    const bioTab = document.getElementById("bio-tab");
+    const gameTab = document.getElementById("game-tab");
+    const tabButtons = document.querySelectorAll(".tab-btn");
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const showGame = btn.dataset.tab === "game-tab";
+
+        bioTab.style.display = showGame ? "none" : "block";
+        gameTab.style.display = showGame ? "block" : "none";
+
+        tabButtons.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle("tab-btn--active", active);
+          b.setAttribute("aria-selected", active);
+        });
+
+        if (typeof GalagaGame !== "undefined") {
+          if (showGame) GalagaGame.resume();
+          else GalagaGame.pause();
+        }
+      });
     });
+
+    /* ==========================================================================
+       Galaga-style Space Shooter
+       ========================================================================== */
+    const GalagaGame = (() => {
+      // --- Configuration ---
+      const CANVAS_W = 480;
+      const CANVAS_H = 600;
+      const PLAYER_W = 36;
+      const PLAYER_H = 28;
+      const PLAYER_Y = CANVAS_H - 48;
+      const PLAYER_SPEED = 5;
+      const LASER_W = 3;
+      const LASER_H = 14;
+      const LASER_SPEED = 9;
+      const FIRE_COOLDOWN_MS = 280;
+      const ENEMY_COLS = 8;
+      const ENEMY_ROWS = 4;
+      const ENEMY_W = 32;
+      const ENEMY_H = 24;
+      const ENEMY_PAD_X = 12;
+      const ENEMY_PAD_Y = 14;
+      const ENEMY_H_SPEED = 1.4;
+      const ENEMY_STEP_DOWN = 18;
+      const ENEMY_DESCEND = 0.12;
+      const STAR_COUNT = 80;
+      const ENEMY_ROW_COLORS = ["#4fc3f7", "#81c784", "#ffd54f", "#ef5350"];
+      const POINTS_PER_ROW = [40, 30, 20, 10];
+
+      // --- DOM ---
+      const canvas = document.getElementById("game-canvas");
+      const ctx = canvas.getContext("2d");
+      const overlay = document.getElementById("game-overlay");
+      const finalScoreEl = document.getElementById("final-score");
+      const restartBtn = document.getElementById("game-restart");
+
+      // --- State ---
+      let running = false;
+      let gameOver = false;
+      let score = 0;
+      let lastFireTime = 0;
+      let animationId = null;
+
+      const keys = { left: false, right: false, fire: false };
+
+      const player = { x: CANVAS_W / 2 - PLAYER_W / 2, y: PLAYER_Y, w: PLAYER_W, h: PLAYER_H };
+      let lasers = [];
+      let enemies = [];
+      let stars = [];
+
+      let formation = {
+        originX: 40,
+        originY: 72,
+        direction: 1,
+        speed: ENEMY_H_SPEED,
+      };
+
+      // --- Input ---
+      function onKeyDown(e) {
+        if (gameOver && e.code !== "Space") return;
+        switch (e.code) {
+          case "ArrowLeft":
+          case "KeyA":
+            keys.left = true;
+            e.preventDefault();
+            break;
+          case "ArrowRight":
+          case "KeyD":
+            keys.right = true;
+            e.preventDefault();
+            break;
+          case "Space":
+            keys.fire = true;
+            e.preventDefault();
+            if (gameOver) restart();
+            break;
+        }
+      }
+
+      function onKeyUp(e) {
+        switch (e.code) {
+          case "ArrowLeft":
+          case "KeyA":
+            keys.left = false;
+            break;
+          case "ArrowRight":
+          case "KeyD":
+            keys.right = false;
+            break;
+          case "Space":
+            keys.fire = false;
+            break;
+        }
+      }
+
+      // --- Entities ---
+      function initStarfield() {
+        stars = Array.from({ length: STAR_COUNT }, () => ({
+          x: Math.random() * CANVAS_W,
+          y: Math.random() * CANVAS_H,
+          speed: 0.4 + Math.random() * 1.6,
+          size: Math.random() < 0.3 ? 2 : 1,
+        }));
+      }
+
+      function updateStarfield() {
+        stars.forEach((star) => {
+          star.y += star.speed;
+          if (star.y > CANVAS_H) {
+            star.y = 0;
+            star.x = Math.random() * CANVAS_W;
+          }
+        });
+      }
+
+      function drawStarfield() {
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+        ctx.fillStyle = "#fff";
+        stars.forEach((star) => {
+          ctx.globalAlpha = star.size === 2 ? 1 : 0.6;
+          ctx.fillRect(star.x, star.y, star.size, star.size);
+        });
+        ctx.globalAlpha = 1;
+      }
+
+      function spawnEnemies() {
+        enemies = [];
+        const gridW = ENEMY_COLS * (ENEMY_W + ENEMY_PAD_X) - ENEMY_PAD_X;
+        formation.originX = (CANVAS_W - gridW) / 2;
+        formation.originY = 72;
+        formation.direction = 1;
+
+        for (let row = 0; row < ENEMY_ROWS; row++) {
+          for (let col = 0; col < ENEMY_COLS; col++) {
+            enemies.push({
+              row,
+              col,
+              w: ENEMY_W,
+              h: ENEMY_H,
+              alive: true,
+              color: ENEMY_ROW_COLORS[row],
+              points: POINTS_PER_ROW[row],
+            });
+          }
+        }
+      }
+
+      function getEnemyPosition(enemy) {
+        return {
+          x: formation.originX + enemy.col * (ENEMY_W + ENEMY_PAD_X),
+          y: formation.originY + enemy.row * (ENEMY_H + ENEMY_PAD_Y),
+          w: enemy.w,
+          h: enemy.h,
+        };
+      }
+
+      function livingEnemies() {
+        return enemies.filter((e) => e.alive);
+      }
+
+      function updateFormation() {
+        const alive = livingEnemies();
+        if (alive.length === 0) {
+          formation.speed += 0.15;
+          spawnEnemies();
+          return;
+        }
+
+        formation.originX += formation.direction * formation.speed;
+        formation.originY += ENEMY_DESCEND;
+
+        let minX = CANVAS_W;
+        let maxX = 0;
+        alive.forEach((enemy) => {
+          const pos = getEnemyPosition(enemy);
+          minX = Math.min(minX, pos.x);
+          maxX = Math.max(maxX, pos.x + pos.w);
+        });
+
+        if (maxX >= CANVAS_W - 8 || minX <= 8) {
+          formation.direction *= -1;
+          formation.originY += ENEMY_STEP_DOWN;
+        }
+      }
+
+      function updatePlayer() {
+        if (keys.left) player.x -= PLAYER_SPEED;
+        if (keys.right) player.x += PLAYER_SPEED;
+        player.x = Math.max(4, Math.min(CANVAS_W - player.w - 4, player.x));
+
+        const now = performance.now();
+        if (keys.fire && !gameOver && now - lastFireTime > FIRE_COOLDOWN_MS) {
+          lasers.push({
+            x: player.x + player.w / 2 - LASER_W / 2,
+            y: player.y - LASER_H,
+            w: LASER_W,
+            h: LASER_H,
+          });
+          lastFireTime = now;
+        }
+      }
+
+      function updateLasers() {
+        lasers = lasers.filter((laser) => {
+          laser.y -= LASER_SPEED;
+          return laser.y + laser.h > 0;
+        });
+      }
+
+      // --- Collision ---
+      function rectsOverlap(a, b) {
+        return (
+          a.x < b.x + b.w &&
+          a.x + a.w > b.x &&
+          a.y < b.y + b.h &&
+          a.y + a.h > b.y
+        );
+      }
+
+      function checkLaserHits() {
+        lasers.forEach((laser) => {
+          enemies.forEach((enemy) => {
+            if (!enemy.alive) return;
+            const pos = getEnemyPosition(enemy);
+            if (rectsOverlap(laser, pos)) {
+              enemy.alive = false;
+              laser.y = -999;
+              score += enemy.points;
+            }
+          });
+        });
+      }
+
+      function checkEnemyPlayerCollision() {
+        const alive = livingEnemies();
+        for (const enemy of alive) {
+          const pos = getEnemyPosition(enemy);
+          if (rectsOverlap(player, pos)) {
+            endGame();
+            return;
+          }
+        }
+
+        if (formation.originY + ENEMY_ROWS * (ENEMY_H + ENEMY_PAD_Y) >= player.y - 8) {
+          endGame();
+        }
+      }
+
+      // --- Drawing ---
+      function drawScore() {
+        ctx.font = "bold 18px 'Courier New', Courier, monospace";
+        ctx.fillStyle = "#fff";
+        ctx.textAlign = "left";
+        ctx.fillText(`SCORE ${score}`, 16, 28);
+      }
+
+      function drawPlayer() {
+        const { x, y, w, h } = player;
+        ctx.fillStyle = "#29b6f6";
+        ctx.beginPath();
+        ctx.moveTo(x + w / 2, y);
+        ctx.lineTo(x + w, y + h);
+        ctx.lineTo(x + w * 0.7, y + h * 0.85);
+        ctx.lineTo(x + w / 2, y + h * 0.65);
+        ctx.lineTo(x + w * 0.3, y + h * 0.85);
+        ctx.lineTo(x, y + h);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = "#4fc3f7";
+        ctx.fillRect(x + w * 0.2, y + h * 0.55, w * 0.6, h * 0.2);
+      }
+
+      function drawLasers() {
+        ctx.fillStyle = "#ffeb3b";
+        lasers.forEach((laser) => {
+          ctx.fillRect(laser.x, laser.y, laser.w, laser.h);
+        });
+      }
+
+      function drawEnemy(enemy) {
+        const { x, y, w, h } = getEnemyPosition(enemy);
+        ctx.fillStyle = enemy.color;
+
+        ctx.beginPath();
+        ctx.ellipse(x + w / 2, y + h * 0.35, w * 0.38, h * 0.28, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillRect(x + w * 0.15, y + h * 0.45, w * 0.7, h * 0.35);
+
+        ctx.fillStyle = "#1a1a1a";
+        ctx.fillRect(x + w * 0.22, y + h * 0.52, w * 0.18, h * 0.12);
+        ctx.fillRect(x + w * 0.6, y + h * 0.52, w * 0.18, h * 0.12);
+
+        ctx.fillStyle = enemy.color;
+        ctx.fillRect(x + w * 0.1, y + h * 0.78, w * 0.22, h * 0.15);
+        ctx.fillRect(x + w * 0.68, y + h * 0.78, w * 0.22, h * 0.15);
+      }
+
+      function drawEnemies() {
+        enemies.forEach((enemy) => {
+          if (enemy.alive) drawEnemy(enemy);
+        });
+      }
+
+      function drawInstructions() {
+        if (!gameOver && score === 0 && livingEnemies().length === ENEMY_COLS * ENEMY_ROWS) {
+          ctx.font = "12px 'Courier New', Courier, monospace";
+          ctx.fillStyle = "rgba(255,255,255,0.45)";
+          ctx.textAlign = "center";
+          ctx.fillText("← →  MOVE    SPACE  FIRE", CANVAS_W / 2, CANVAS_H - 16);
+        }
+      }
+
+      // --- Game flow ---
+      function endGame() {
+        gameOver = true;
+        finalScoreEl.textContent = score;
+        overlay.hidden = false;
+      }
+
+      function restart() {
+        gameOver = false;
+        score = 0;
+        lasers = [];
+        player.x = CANVAS_W / 2 - PLAYER_W / 2;
+        formation.speed = ENEMY_H_SPEED;
+        overlay.hidden = true;
+        spawnEnemies();
+      }
+
+      function update() {
+        if (gameOver) return;
+
+        updateStarfield();
+        updatePlayer();
+        updateLasers();
+        updateFormation();
+        checkLaserHits();
+        checkEnemyPlayerCollision();
+      }
+
+      function render() {
+        drawStarfield();
+        drawEnemies();
+        drawLasers();
+        drawPlayer();
+        drawScore();
+        drawInstructions();
+      }
+
+      function loop() {
+        if (!running) return;
+        update();
+        render();
+        animationId = requestAnimationFrame(loop);
+      }
+
+      function init() {
+        initStarfield();
+        spawnEnemies();
+        window.addEventListener("keydown", onKeyDown);
+        window.addEventListener("keyup", onKeyUp);
+        restartBtn.addEventListener("click", restart);
+      }
+
+      function start() {
+        if (animationId) return;
+        running = true;
+        loop();
+      }
+
+      function pause() {
+        running = false;
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+      }
+
+      function resume() {
+        if (!running) {
+          running = true;
+          loop();
+        }
+      }
+
+      init();
+      pause();
+
+      return { pause, resume, restart, start };
+    })();
   </script>
 </body>
 </html>
