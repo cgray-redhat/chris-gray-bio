@@ -144,11 +144,245 @@
       border-color: rgba(255, 255, 255, 0.25);
     }
 
-    #game-tab {
+    #game-tab,
+    #cocktail-tab {
       display: none;
-      background: #0a0a0a;
       min-height: calc(100vh - 3.5rem);
+    }
+
+    #game-tab {
+      background: #0a0a0a;
       padding: 2rem 1rem 3rem;
+    }
+
+    #cocktail-tab {
+      background: var(--bg-alt);
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .cocktail-wrap {
+      max-width: 42rem;
+      margin: 0 auto;
+    }
+
+    .cocktail-wrap h2 {
+      margin-bottom: 0.35rem;
+    }
+
+    .cocktail-intro {
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 36rem;
+    }
+
+    .cocktail-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .cocktail-field label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .cocktail-field label span {
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      padding: 0.45rem 0.85rem;
+      font-size: 0.875rem;
+      font-family: inherit;
+      font-weight: 500;
+      color: var(--slate);
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .chip:hover {
+      border-color: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .chip:focus-visible {
+      outline: 2px solid var(--blue-light);
+      outline-offset: 2px;
+    }
+
+    .chip--selected {
+      color: var(--text-inverse);
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .chip--selected:hover {
+      color: var(--text-inverse);
+      background: var(--blue-light);
+      border-color: var(--blue-light);
+    }
+
+    .cocktail-input {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color var(--transition);
+    }
+
+    .cocktail-input:focus {
+      outline: none;
+      border-color: var(--blue-light);
+    }
+
+    .cocktail-input::placeholder {
+      color: var(--muted);
+    }
+
+    .cocktail-submit {
+      align-self: flex-start;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: var(--text-inverse);
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    .cocktail-submit:hover {
+      background: var(--accent-hover);
+    }
+
+    .cocktail-submit:focus-visible {
+      outline: 2px solid var(--charcoal);
+      outline-offset: 2px;
+    }
+
+    .cocktail-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .cocktail-result {
+      margin-top: 2.5rem;
+      padding: 1.75rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .cocktail-result[hidden] {
+      display: none;
+    }
+
+    .cocktail-classic {
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cocktail-classic__label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .cocktail-classic__name {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.35rem;
+    }
+
+    .cocktail-classic__desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cocktail-recipe__name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .cocktail-recipe__inspired {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .recipe-ingredients {
+      list-style: none;
+      margin-bottom: 1.25rem;
+    }
+
+    .recipe-ingredients li {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .recipe-ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    .recipe-ingredients strong {
+      color: var(--blue);
+      font-weight: 600;
+      min-width: 3.5rem;
+      display: inline-block;
+    }
+
+    .recipe-steps {
+      margin-bottom: 1rem;
+      padding-left: 1.25rem;
+    }
+
+    .recipe-steps li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .recipe-garnish {
+      font-size: 0.9rem;
+      color: var(--slate);
+      font-style: italic;
+    }
+
+    .cocktail-ratio-note {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
     }
 
     .game-wrap {
@@ -735,6 +969,7 @@
       <p class="tab-header__brand">Chris <span>Gray</span></p>
       <nav class="tab-nav" aria-label="Page tabs">
         <button type="button" class="tab-btn tab-btn--active" data-tab="bio-tab" aria-selected="true">About Me</button>
+        <button type="button" class="tab-btn" data-tab="cocktail-tab" aria-selected="false">Cocktail Maker</button>
         <button type="button" class="tab-btn" data-tab="game-tab" aria-selected="false">Arcade Game</button>
       </nav>
     </div>
@@ -951,6 +1186,79 @@
     </div>
   </section>
 
+  <section id="cocktail-tab" aria-label="Cocktail Maker">
+    <div class="cocktail-wrap">
+      <h2>Cocktail Maker</h2>
+      <p class="cocktail-intro">Pick your spirit and flavor profile — we'll match a classic cocktail and customize it to your taste.</p>
+
+      <form class="cocktail-form" id="cocktail-form" novalidate>
+        <div class="cocktail-field">
+          <label for="liquor-group">Liquor</label>
+          <div class="chip-group" id="liquor-group" role="group" aria-label="Liquor type">
+            <button type="button" class="chip" data-value="gin">Gin</button>
+            <button type="button" class="chip" data-value="vodka">Vodka</button>
+            <button type="button" class="chip" data-value="rum">Rum</button>
+            <button type="button" class="chip" data-value="tequila">Tequila</button>
+            <button type="button" class="chip" data-value="whiskey">Whiskey</button>
+            <button type="button" class="chip" data-value="bourbon">Bourbon</button>
+            <button type="button" class="chip" data-value="brandy">Brandy</button>
+            <button type="button" class="chip" data-value="mezcal">Mezcal</button>
+          </div>
+        </div>
+
+        <div class="cocktail-field">
+          <label for="profile-group">Flavor profile</label>
+          <div class="chip-group" id="profile-group" role="group" aria-label="Flavor profile">
+            <button type="button" class="chip" data-value="sweet-sour">Sweet &amp; Sour</button>
+            <button type="button" class="chip" data-value="bitter-bold">Bitter &amp; Bold</button>
+            <button type="button" class="chip" data-value="refreshing">Refreshing</button>
+            <button type="button" class="chip" data-value="spirit-forward">Spirit-Forward</button>
+            <button type="button" class="chip" data-value="tropical-fruity">Tropical &amp; Fruity</button>
+            <button type="button" class="chip" data-value="herbaceous-light">Herbaceous &amp; Light</button>
+          </div>
+        </div>
+
+        <div class="cocktail-field">
+          <label for="color-group">Color <span>(optional)</span></label>
+          <div class="chip-group" id="color-group" role="group" aria-label="Desired color">
+            <button type="button" class="chip chip--selected" data-value="">None</button>
+            <button type="button" class="chip" data-value="red">Red</button>
+            <button type="button" class="chip" data-value="pink">Pink</button>
+            <button type="button" class="chip" data-value="orange">Orange</button>
+            <button type="button" class="chip" data-value="yellow">Yellow</button>
+            <button type="button" class="chip" data-value="green">Green</button>
+            <button type="button" class="chip" data-value="blue">Blue</button>
+            <button type="button" class="chip" data-value="purple">Purple</button>
+            <button type="button" class="chip" data-value="clear">Clear</button>
+          </div>
+        </div>
+
+        <div class="cocktail-field">
+          <label for="special-ingredients">Special ingredients <span>(optional)</span></label>
+          <input type="text" class="cocktail-input" id="special-ingredients" placeholder="e.g., basil, ginger, grapefruit" autocomplete="off">
+        </div>
+
+        <button type="submit" class="cocktail-submit" id="cocktail-submit" disabled>Make My Cocktail</button>
+      </form>
+
+      <div class="cocktail-result" id="cocktail-result" hidden>
+        <div class="cocktail-classic">
+          <p class="cocktail-classic__label">Classic Match</p>
+          <h3 class="cocktail-classic__name" id="classic-name"></h3>
+          <p class="cocktail-classic__desc" id="classic-desc"></p>
+        </div>
+        <div class="cocktail-recipe">
+          <h3 class="cocktail-recipe__name" id="recipe-name"></h3>
+          <p class="cocktail-recipe__inspired" id="recipe-inspired"></p>
+          <ul class="recipe-ingredients" id="recipe-ingredients"></ul>
+          <ol class="recipe-steps" id="recipe-steps"></ol>
+          <p class="recipe-garnish" id="recipe-garnish"></p>
+          <p class="cocktail-ratio-note" id="ratio-note" hidden></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -981,27 +1289,993 @@
 
     const bioTab = document.getElementById("bio-tab");
     const gameTab = document.getElementById("game-tab");
+    const cocktailTab = document.getElementById("cocktail-tab");
     const tabButtons = document.querySelectorAll(".tab-btn");
 
+    const tabs = {
+      "bio-tab": bioTab,
+      "game-tab": gameTab,
+      "cocktail-tab": cocktailTab,
+    };
+
+    function showTab(tabId) {
+      Object.entries(tabs).forEach(([id, el]) => {
+        el.style.display = id === tabId ? "block" : "none";
+      });
+
+      tabButtons.forEach((b) => {
+        const active = b.dataset.tab === tabId;
+        b.classList.toggle("tab-btn--active", active);
+        b.setAttribute("aria-selected", active);
+      });
+
+      if (typeof GalagaGame !== "undefined") {
+        if (tabId === "game-tab") GalagaGame.resume();
+        else GalagaGame.pause();
+      }
+    }
+
     tabButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const showGame = btn.dataset.tab === "game-tab";
+      btn.addEventListener("click", () => showTab(btn.dataset.tab));
+    });
 
-        bioTab.style.display = showGame ? "none" : "block";
-        gameTab.style.display = showGame ? "block" : "none";
+    /* ==========================================================================
+       Cocktail Maker
+       ========================================================================== */
+    const CocktailMaker = (() => {
+      const COCKTAIL_CLASSICS = [
+        {
+          id: "gimlet",
+          name: "Gimlet",
+          spirit: "gin",
+          profiles: ["sweet-sour", "herbaceous-light"],
+          description: "A crisp gin sour built on lime and simple syrup — clean and timeless.",
+          ingredients: [
+            { amount: "2 oz", item: "London dry gin" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with ice.",
+            "Shake until well chilled, about 15 seconds.",
+            "Strain into a chilled coupe or Nick & Nora glass.",
+          ],
+          garnish: "Lime wheel",
+          goldenRatio: { spirit: "London dry gin", sweet: "Simple syrup", tart: "Fresh lime juice" },
+        },
+        {
+          id: "negroni",
+          name: "Negroni",
+          spirit: "gin",
+          profiles: ["bitter-bold", "spirit-forward"],
+          description: "Equal parts gin, Campari, and sweet vermouth — bitter, bold, and iconic.",
+          ingredients: [
+            { amount: "1 oz", item: "London dry gin" },
+            { amount: "1 oz", item: "Campari" },
+            { amount: "1 oz", item: "Sweet vermouth" },
+          ],
+          instructions: [
+            "Add all ingredients to a mixing glass with ice.",
+            "Stir until well chilled, about 30 seconds.",
+            "Strain into a rocks glass over a large ice cube.",
+          ],
+          garnish: "Orange peel",
+          goldenRatio: { spirit: "London dry gin", sweet: "Sweet vermouth", tart: "Campari" },
+        },
+        {
+          id: "tom-collins",
+          name: "Tom Collins",
+          spirit: "gin",
+          profiles: ["refreshing", "sweet-sour"],
+          description: "A tall, fizzy gin sour topped with soda — bright and easy drinking.",
+          ingredients: [
+            { amount: "2 oz", item: "London dry gin" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lemon juice" },
+            { amount: "Top", item: "Club soda" },
+          ],
+          instructions: [
+            "Add gin, syrup, and lemon juice to a shaker with ice.",
+            "Shake briefly, then strain into a Collins glass over fresh ice.",
+            "Top with club soda and stir gently once.",
+          ],
+          garnish: "Lemon wheel and cherry",
+          goldenRatio: { spirit: "London dry gin", sweet: "Simple syrup", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "aviation",
+          name: "Aviation",
+          spirit: "gin",
+          profiles: ["herbaceous-light", "spirit-forward"],
+          description: "Floral gin with maraschino and crème de violette — delicate and elegant.",
+          ingredients: [
+            { amount: "2 oz", item: "London dry gin" },
+            { amount: "0.5 oz", item: "Maraschino liqueur" },
+            { amount: "0.75 oz", item: "Fresh lemon juice" },
+            { amount: "0.25 oz", item: "Crème de violette" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with ice.",
+            "Shake until well chilled.",
+            "Strain into a chilled coupe glass.",
+          ],
+          garnish: "Brandied cherry",
+          goldenRatio: { spirit: "London dry gin", sweet: "Maraschino liqueur", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "southside",
+          name: "Southside",
+          spirit: "gin",
+          profiles: ["herbaceous-light", "refreshing"],
+          description: "A minty gin sour — Prohibition-era refreshment with a herbal kick.",
+          ingredients: [
+            { amount: "2 oz", item: "London dry gin" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+            { amount: "6 leaves", item: "Fresh mint" },
+          ],
+          instructions: [
+            "Gently muddle mint with syrup in a shaker.",
+            "Add gin, lime juice, and ice; shake until chilled.",
+            "Double-strain into a chilled coupe glass.",
+          ],
+          garnish: "Mint sprig",
+          goldenRatio: { spirit: "London dry gin", sweet: "Simple syrup", tart: "Fresh lime juice" },
+        },
+        {
+          id: "moscow-mule",
+          name: "Moscow Mule",
+          spirit: "vodka",
+          profiles: ["refreshing", "spicy"],
+          description: "Vodka, ginger beer, and lime in a copper mug — spicy and refreshing.",
+          ingredients: [
+            { amount: "2 oz", item: "Vodka" },
+            { amount: "0.75 oz", item: "Fresh lime juice" },
+            { amount: "Top", item: "Ginger beer" },
+          ],
+          instructions: [
+            "Fill a copper mug or highball glass with ice.",
+            "Add vodka and lime juice, then top with ginger beer.",
+            "Stir gently to combine.",
+          ],
+          garnish: "Lime wedge",
+          goldenRatio: { spirit: "Vodka", sweet: "Ginger beer", tart: "Fresh lime juice" },
+        },
+        {
+          id: "cosmopolitan",
+          name: "Cosmopolitan",
+          spirit: "vodka",
+          profiles: ["sweet-sour", "tropical-fruity"],
+          description: "Vodka, triple sec, cranberry, and lime — tart, pink, and polished.",
+          ingredients: [
+            { amount: "2 oz", item: "Citron vodka" },
+            { amount: "1 oz", item: "Triple sec" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+            { amount: "0.5 oz", item: "Cranberry juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with ice.",
+            "Shake until well chilled.",
+            "Strain into a chilled martini glass.",
+          ],
+          garnish: "Flamed orange peel or lime wheel",
+          goldenRatio: { spirit: "Citron vodka", sweet: "Triple sec", tart: "Fresh lime juice" },
+        },
+        {
+          id: "vodka-gimlet",
+          name: "Vodka Gimlet",
+          spirit: "vodka",
+          profiles: ["sweet-sour", "herbaceous-light"],
+          description: "The gin gimlet's clean cousin — vodka, lime, and a touch of sweetness.",
+          ingredients: [
+            { amount: "2 oz", item: "Vodka" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with ice.",
+            "Shake until well chilled.",
+            "Strain into a chilled coupe glass.",
+          ],
+          garnish: "Lime wheel",
+          goldenRatio: { spirit: "Vodka", sweet: "Simple syrup", tart: "Fresh lime juice" },
+        },
+        {
+          id: "bloody-mary",
+          name: "Bloody Mary",
+          spirit: "vodka",
+          profiles: ["spirit-forward", "savory"],
+          description: "Savory brunch classic — vodka with tomato, spice, and umami depth.",
+          ingredients: [
+            { amount: "2 oz", item: "Vodka" },
+            { amount: "4 oz", item: "Tomato juice" },
+            { amount: "0.5 oz", item: "Fresh lemon juice" },
+            { amount: "2 dashes", item: "Worcestershire sauce" },
+            { amount: "2 dashes", item: "Hot sauce" },
+          ],
+          instructions: [
+            "Build all ingredients in a highball glass over ice.",
+            "Roll between two tins or stir gently to combine.",
+            "Adjust seasoning to taste.",
+          ],
+          garnish: "Celery stalk, lemon wedge, olives",
+          goldenRatio: { spirit: "Vodka", sweet: "Tomato juice", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "lemon-drop",
+          name: "Lemon Drop",
+          spirit: "vodka",
+          profiles: ["sweet-sour", "tropical-fruity"],
+          description: "A sugared-rim vodka sour with bright lemon and a sweet finish.",
+          ingredients: [
+            { amount: "2 oz", item: "Citron vodka" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lemon juice" },
+          ],
+          instructions: [
+            "Rim a chilled coupe with sugar.",
+            "Shake all ingredients with ice until chilled.",
+            "Strain into the prepared glass.",
+          ],
+          garnish: "Lemon twist",
+          goldenRatio: { spirit: "Citron vodka", sweet: "Simple syrup", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "daiquiri",
+          name: "Daiquiri",
+          spirit: "rum",
+          profiles: ["sweet-sour", "refreshing"],
+          description: "The rum sour template — white rum, lime, and simple syrup, shaken cold.",
+          ingredients: [
+            { amount: "2 oz", item: "White rum" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with ice.",
+            "Shake vigorously until well chilled.",
+            "Strain into a chilled coupe glass.",
+          ],
+          garnish: "Lime wheel",
+          goldenRatio: { spirit: "White rum", sweet: "Simple syrup", tart: "Fresh lime juice" },
+        },
+        {
+          id: "mojito",
+          name: "Mojito",
+          spirit: "rum",
+          profiles: ["refreshing", "herbaceous-light"],
+          description: "White rum muddled with mint, lime, and sugar — Cuban refreshment.",
+          ingredients: [
+            { amount: "2 oz", item: "White rum" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+            { amount: "8 leaves", item: "Fresh mint" },
+            { amount: "Top", item: "Club soda" },
+          ],
+          instructions: [
+            "Gently muddle mint with syrup and lime in a highball glass.",
+            "Add rum and fill with crushed ice.",
+            "Top with club soda and stir gently.",
+          ],
+          garnish: "Mint sprig and lime wedge",
+          goldenRatio: { spirit: "White rum", sweet: "Simple syrup", tart: "Fresh lime juice" },
+        },
+        {
+          id: "mai-tai",
+          name: "Mai Tai",
+          spirit: "rum",
+          profiles: ["tropical-fruity", "spirit-forward"],
+          description: "Tiki royalty — aged rum, orange curaçao, orgeat, and lime.",
+          ingredients: [
+            { amount: "2 oz", item: "Aged rum" },
+            { amount: "0.75 oz", item: "Orange curaçao" },
+            { amount: "0.75 oz", item: "Orgeat syrup" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with crushed ice.",
+            "Shake briefly, then pour unstrained into a rocks glass.",
+            "Top with more crushed ice if needed.",
+          ],
+          garnish: "Mint sprig and spent lime shell",
+          goldenRatio: { spirit: "Aged rum", sweet: "Orgeat syrup", tart: "Fresh lime juice" },
+        },
+        {
+          id: "dark-and-stormy",
+          name: "Dark & Stormy",
+          spirit: "rum",
+          profiles: ["refreshing", "spicy"],
+          description: "Dark rum floated over ginger beer — Bermudian and bold.",
+          ingredients: [
+            { amount: "2 oz", item: "Dark rum" },
+            { amount: "Top", item: "Ginger beer" },
+            { amount: "0.5 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Fill a highball glass with ice and add lime juice.",
+            "Top with ginger beer, leaving room for rum.",
+            "Float dark rum on top.",
+          ],
+          garnish: "Lime wedge",
+          goldenRatio: { spirit: "Dark rum", sweet: "Ginger beer", tart: "Fresh lime juice" },
+        },
+        {
+          id: "pina-colada",
+          name: "Piña Colada",
+          spirit: "rum",
+          profiles: ["tropical-fruity", "sweet-sour"],
+          description: "Creamy tropical rum and pineapple — vacation in a glass.",
+          ingredients: [
+            { amount: "2 oz", item: "White rum" },
+            { amount: "1 oz", item: "Coconut cream" },
+            { amount: "1 oz", item: "Fresh pineapple juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a blender with crushed ice.",
+            "Blend until smooth and pour into a hurricane glass.",
+          ],
+          garnish: "Pineapple wedge and cherry",
+          goldenRatio: { spirit: "White rum", sweet: "Coconut cream", tart: "Fresh pineapple juice" },
+        },
+        {
+          id: "margarita",
+          name: "Margarita",
+          spirit: "tequila",
+          profiles: ["sweet-sour", "refreshing"],
+          description: "The quintessential tequila sour — bright lime and orange liqueur.",
+          ingredients: [
+            { amount: "2 oz", item: "Blanco tequila" },
+            { amount: "1 oz", item: "Triple sec" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Rim a rocks glass with salt if desired.",
+            "Shake all ingredients with ice until chilled.",
+            "Strain over fresh ice in the prepared glass.",
+          ],
+          garnish: "Lime wheel",
+          goldenRatio: { spirit: "Blanco tequila", sweet: "Triple sec", tart: "Fresh lime juice" },
+        },
+        {
+          id: "paloma",
+          name: "Paloma",
+          spirit: "tequila",
+          profiles: ["refreshing", "tropical-fruity"],
+          description: "Tequila with grapefruit soda — Mexico's most popular cocktail.",
+          ingredients: [
+            { amount: "2 oz", item: "Blanco tequila" },
+            { amount: "0.5 oz", item: "Fresh lime juice" },
+            { amount: "Top", item: "Grapefruit soda" },
+          ],
+          instructions: [
+            "Build tequila and lime in a highball glass over ice.",
+            "Top with grapefruit soda and stir gently.",
+          ],
+          garnish: "Grapefruit wedge and salt rim (optional)",
+          goldenRatio: { spirit: "Blanco tequila", sweet: "Grapefruit soda", tart: "Fresh lime juice" },
+        },
+        {
+          id: "tommys-margarita",
+          name: "Tommy's Margarita",
+          spirit: "tequila",
+          profiles: ["sweet-sour", "spirit-forward"],
+          description: "Agave-forward margarita — tequila, lime, and agave nectar only.",
+          ingredients: [
+            { amount: "2 oz", item: "Reposado tequila" },
+            { amount: "1 oz", item: "Agave nectar" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Shake all ingredients with ice until well chilled.",
+            "Strain into a rocks glass over a large ice cube.",
+          ],
+          garnish: "Lime wheel",
+          goldenRatio: { spirit: "Reposado tequila", sweet: "Agave nectar", tart: "Fresh lime juice" },
+        },
+        {
+          id: "tequila-sunrise",
+          name: "Tequila Sunrise",
+          spirit: "tequila",
+          profiles: ["tropical-fruity", "sweet-sour"],
+          description: "Layered tequila, orange, and grenadine — sunset in a glass.",
+          ingredients: [
+            { amount: "2 oz", item: "Blanco tequila" },
+            { amount: "4 oz", item: "Fresh orange juice" },
+            { amount: "0.5 oz", item: "Grenadine" },
+          ],
+          instructions: [
+            "Build tequila and orange juice over ice in a highball glass.",
+            "Slowly pour grenadine to sink and create a gradient.",
+          ],
+          garnish: "Orange slice and cherry",
+          goldenRatio: { spirit: "Blanco tequila", sweet: "Grenadine", tart: "Fresh orange juice" },
+        },
+        {
+          id: "ranch-water",
+          name: "Ranch Water",
+          spirit: "tequila",
+          profiles: ["refreshing", "herbaceous-light"],
+          description: "West Texas highball — tequila, lime, and Topo Chico.",
+          ingredients: [
+            { amount: "2 oz", item: "Blanco tequila" },
+            { amount: "0.75 oz", item: "Fresh lime juice" },
+            { amount: "Top", item: "Sparkling mineral water" },
+          ],
+          instructions: [
+            "Add tequila and lime to a highball glass over ice.",
+            "Top with sparkling water and stir once.",
+          ],
+          garnish: "Lime wedge",
+          goldenRatio: { spirit: "Blanco tequila", sweet: "Agave nectar (optional dash)", tart: "Fresh lime juice" },
+        },
+        {
+          id: "whiskey-sour",
+          name: "Whiskey Sour",
+          spirit: "whiskey",
+          profiles: ["sweet-sour", "spirit-forward"],
+          description: "Whiskey shaken with lemon and syrup — optionally silky with egg white.",
+          ingredients: [
+            { amount: "2 oz", item: "Bourbon or rye whiskey" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lemon juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with ice.",
+            "Shake hard until well chilled.",
+            "Strain into a rocks glass over ice.",
+          ],
+          garnish: "Cherry and orange slice",
+          goldenRatio: { spirit: "Bourbon or rye whiskey", sweet: "Simple syrup", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "old-fashioned",
+          name: "Old Fashioned",
+          spirit: "whiskey",
+          profiles: ["spirit-forward", "bitter-bold"],
+          description: "Spirit, sugar, bitters, and ice — the original cocktail.",
+          ingredients: [
+            { amount: "2 oz", item: "Rye or bourbon whiskey" },
+            { amount: "0.25 oz", item: "Simple syrup" },
+            { amount: "2 dashes", item: "Angostura bitters" },
+          ],
+          instructions: [
+            "Add syrup and bitters to a rocks glass, then add whiskey.",
+            "Add a large ice cube and stir until chilled.",
+          ],
+          garnish: "Expressed orange peel",
+          goldenRatio: { spirit: "Rye or bourbon whiskey", sweet: "Simple syrup", tart: "Angostura bitters" },
+        },
+        {
+          id: "manhattan",
+          name: "Manhattan",
+          spirit: "whiskey",
+          profiles: ["spirit-forward", "bitter-bold"],
+          description: "Rye whiskey, sweet vermouth, and bitters — stirred and sophisticated.",
+          ingredients: [
+            { amount: "2 oz", item: "Rye whiskey" },
+            { amount: "1 oz", item: "Sweet vermouth" },
+            { amount: "2 dashes", item: "Angostura bitters" },
+          ],
+          instructions: [
+            "Add all ingredients to a mixing glass with ice.",
+            "Stir until well chilled, about 30 seconds.",
+            "Strain into a chilled coupe or Nick & Nora glass.",
+          ],
+          garnish: "Brandied cherry",
+          goldenRatio: { spirit: "Rye whiskey", sweet: "Sweet vermouth", tart: "Angostura bitters" },
+        },
+        {
+          id: "mint-julep",
+          name: "Mint Julep",
+          spirit: "bourbon",
+          profiles: ["herbaceous-light", "refreshing"],
+          description: "Bourbon, mint, and crushed ice — Derby Day in a silver cup.",
+          ingredients: [
+            { amount: "2 oz", item: "Bourbon" },
+            { amount: "0.75 oz", item: "Simple syrup" },
+            { amount: "8 leaves", item: "Fresh mint" },
+          ],
+          instructions: [
+            "Gently muddle mint with syrup in a julep cup.",
+            "Add bourbon and pack with crushed ice.",
+            "Stir until the cup frosts, adding more ice as needed.",
+          ],
+          garnish: "Mint bouquet",
+          goldenRatio: { spirit: "Bourbon", sweet: "Simple syrup", tart: "Fresh lemon juice (optional splash)" },
+        },
+        {
+          id: "boulevardier",
+          name: "Boulevardier",
+          spirit: "bourbon",
+          profiles: ["bitter-bold", "spirit-forward"],
+          description: "Bourbon's Negroni — whiskey, Campari, and sweet vermouth.",
+          ingredients: [
+            { amount: "1.5 oz", item: "Bourbon" },
+            { amount: "1 oz", item: "Campari" },
+            { amount: "1 oz", item: "Sweet vermouth" },
+          ],
+          instructions: [
+            "Stir all ingredients with ice until chilled.",
+            "Strain into a rocks glass over a large ice cube.",
+          ],
+          garnish: "Orange peel",
+          goldenRatio: { spirit: "Bourbon", sweet: "Sweet vermouth", tart: "Campari" },
+        },
+        {
+          id: "whiskey-smash",
+          name: "Whiskey Smash",
+          spirit: "bourbon",
+          profiles: ["refreshing", "herbaceous-light"],
+          description: "Bourbon muddled with mint and lemon — bright and crushable.",
+          ingredients: [
+            { amount: "2 oz", item: "Bourbon" },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lemon juice" },
+            { amount: "6 leaves", item: "Fresh mint" },
+          ],
+          instructions: [
+            "Muddle mint and lemon in a shaker.",
+            "Add bourbon, syrup, and ice; shake until chilled.",
+            "Strain into a rocks glass over fresh ice.",
+          ],
+          garnish: "Mint sprig",
+          goldenRatio: { spirit: "Bourbon", sweet: "Simple syrup", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "paper-plane",
+          name: "Paper Plane",
+          spirit: "bourbon",
+          profiles: ["bitter-bold", "sweet-sour"],
+          description: "Modern equal-parts bourbon, Aperol, amaro, and lemon.",
+          ingredients: [
+            { amount: "0.75 oz", item: "Bourbon" },
+            { amount: "0.75 oz", item: "Aperol" },
+            { amount: "0.75 oz", item: "Amaro Nonino" },
+            { amount: "0.75 oz", item: "Fresh lemon juice" },
+          ],
+          instructions: [
+            "Shake all ingredients with ice until chilled.",
+            "Strain into a chilled coupe glass.",
+          ],
+          garnish: "None",
+          goldenRatio: { spirit: "Bourbon", sweet: "Aperol", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "sidecar",
+          name: "Sidecar",
+          spirit: "brandy",
+          profiles: ["sweet-sour", "spirit-forward"],
+          description: "Cognac, orange liqueur, and lemon — a brandy sour classic.",
+          ingredients: [
+            { amount: "2 oz", item: "Cognac" },
+            { amount: "1 oz", item: "Triple sec" },
+            { amount: "1 oz", item: "Fresh lemon juice" },
+          ],
+          instructions: [
+            "Shake all ingredients with ice until well chilled.",
+            "Strain into a sugar-rimmed coupe if desired.",
+          ],
+          garnish: "Orange twist",
+          goldenRatio: { spirit: "Cognac", sweet: "Triple sec", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "brandy-crusta",
+          name: "Brandy Crusta",
+          spirit: "brandy",
+          profiles: ["spirit-forward", "bitter-bold"],
+          description: "Sugar-rimmed cognac sour with curaçao and bitters.",
+          ingredients: [
+            { amount: "2 oz", item: "Cognac" },
+            { amount: "0.5 oz", item: "Orange curaçao" },
+            { amount: "0.75 oz", item: "Fresh lemon juice" },
+            { amount: "2 dashes", item: "Angostura bitters" },
+          ],
+          instructions: [
+            "Rim a wine glass with sugar and prepare a long lemon peel.",
+            "Shake ingredients with ice and strain into the glass.",
+            "Curl the lemon peel inside the rim.",
+          ],
+          garnish: "Long lemon peel",
+          goldenRatio: { spirit: "Cognac", sweet: "Orange curaçao", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "vieux-carre",
+          name: "Vieux Carré",
+          spirit: "brandy",
+          profiles: ["spirit-forward", "bitter-bold"],
+          description: "New Orleans stirred classic — cognac, rye, vermouth, and Bénédictine.",
+          ingredients: [
+            { amount: "0.75 oz", item: "Cognac" },
+            { amount: "0.75 oz", item: "Rye whiskey" },
+            { amount: "0.75 oz", item: "Sweet vermouth" },
+            { amount: "0.25 oz", item: "Bénédictine" },
+            { amount: "2 dashes", item: "Peychaud's bitters" },
+          ],
+          instructions: [
+            "Stir all ingredients with ice until well chilled.",
+            "Strain into a rocks glass over a large ice cube.",
+          ],
+          garnish: "Lemon peel",
+          goldenRatio: { spirit: "Cognac", sweet: "Bénédictine", tart: "Peychaud's bitters" },
+        },
+        {
+          id: "french-75",
+          name: "French 75",
+          spirit: "brandy",
+          profiles: ["refreshing", "herbaceous-light"],
+          description: "Cognac, lemon, and champagne — celebratory and crisp.",
+          ingredients: [
+            { amount: "1 oz", item: "Cognac" },
+            { amount: "0.5 oz", item: "Simple syrup" },
+            { amount: "0.5 oz", item: "Fresh lemon juice" },
+            { amount: "Top", item: "Champagne" },
+          ],
+          instructions: [
+            "Shake cognac, syrup, and lemon with ice.",
+            "Strain into a flute and top with champagne.",
+          ],
+          garnish: "Lemon twist",
+          goldenRatio: { spirit: "Cognac", sweet: "Simple syrup", tart: "Fresh lemon juice" },
+        },
+        {
+          id: "mezcal-margarita",
+          name: "Mezcal Margarita",
+          spirit: "mezcal",
+          profiles: ["sweet-sour", "spirit-forward"],
+          description: "Smoky mezcal with lime and agave — a margarita with depth.",
+          ingredients: [
+            { amount: "2 oz", item: "Mezcal" },
+            { amount: "1 oz", item: "Agave nectar" },
+            { amount: "1 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Shake all ingredients with ice until chilled.",
+            "Strain into a rocks glass over ice.",
+          ],
+          garnish: "Lime wheel and sal de gusano rim (optional)",
+          goldenRatio: { spirit: "Mezcal", sweet: "Agave nectar", tart: "Fresh lime juice" },
+        },
+        {
+          id: "oaxaca-old-fashioned",
+          name: "Oaxaca Old Fashioned",
+          spirit: "mezcal",
+          profiles: ["spirit-forward", "bitter-bold"],
+          description: "Split-base mezcal and tequila stirred with agave and bitters.",
+          ingredients: [
+            { amount: "1.5 oz", item: "Mezcal" },
+            { amount: "0.5 oz", item: "Reposado tequila" },
+            { amount: "0.25 oz", item: "Agave nectar" },
+            { amount: "2 dashes", item: "Angostura bitters" },
+          ],
+          instructions: [
+            "Stir all ingredients with ice until chilled.",
+            "Strain into a rocks glass over a large ice cube.",
+          ],
+          garnish: "Flamed orange peel",
+          goldenRatio: { spirit: "Mezcal", sweet: "Agave nectar", tart: "Angostura bitters" },
+        },
+        {
+          id: "mezcal-mule",
+          name: "Mezcal Mule",
+          spirit: "mezcal",
+          profiles: ["refreshing", "spicy"],
+          description: "Smoky mezcal with ginger beer and lime — a mule with character.",
+          ingredients: [
+            { amount: "2 oz", item: "Mezcal" },
+            { amount: "0.75 oz", item: "Fresh lime juice" },
+            { amount: "Top", item: "Ginger beer" },
+          ],
+          instructions: [
+            "Build mezcal and lime in a copper mug over ice.",
+            "Top with ginger beer and stir gently.",
+          ],
+          garnish: "Lime wedge",
+          goldenRatio: { spirit: "Mezcal", sweet: "Ginger beer", tart: "Fresh lime juice" },
+        },
+        {
+          id: "naked-and-famous",
+          name: "Naked & Famous",
+          spirit: "mezcal",
+          profiles: ["bitter-bold", "tropical-fruity"],
+          description: "Equal parts mezcal, Aperol, yellow Chartreuse, and lime.",
+          ingredients: [
+            { amount: "0.75 oz", item: "Mezcal" },
+            { amount: "0.75 oz", item: "Aperol" },
+            { amount: "0.75 oz", item: "Yellow Chartreuse" },
+            { amount: "0.75 oz", item: "Fresh lime juice" },
+          ],
+          instructions: [
+            "Shake all ingredients with ice until chilled.",
+            "Strain into a chilled coupe glass.",
+          ],
+          garnish: "None",
+          goldenRatio: { spirit: "Mezcal", sweet: "Yellow Chartreuse", tart: "Fresh lime juice" },
+        },
+      ];
 
-        tabButtons.forEach((b) => {
-          const active = b === btn;
-          b.classList.toggle("tab-btn--active", active);
-          b.setAttribute("aria-selected", active);
+      const COLOR_MODIFIERS = {
+        red: { amount: "0.25 oz", item: "Grenadine", prefix: "Crimson" },
+        pink: { amount: "0.5 oz", item: "Raspberry liqueur", prefix: "Blush" },
+        orange: { amount: "0.5 oz", item: "Orange liqueur", prefix: "Sunset" },
+        yellow: { amount: "0.5 oz", item: "Pineapple juice", prefix: "Golden" },
+        green: { amount: "0.5 oz", item: "Midori or muddled mint", prefix: "Verdant" },
+        blue: { amount: "0.5 oz", item: "Blue Curaçao", prefix: "Azure" },
+        purple: { amount: "0.25 oz", item: "Crème de violette", prefix: "Violet" },
+        clear: null,
+      };
+
+      const SPECIAL_RULES = [
+        { keywords: ["basil", "mint", "rosemary", "thyme", "sage", "cilantro"], type: "herb" },
+        { keywords: ["ginger", "honey", "maple"], type: "sweet" },
+        { keywords: ["grapefruit", "blood orange", "yuzu", "passion fruit"], type: "citrus" },
+        { keywords: ["jalapeño", "jalapeno", "chili", "chile", "habanero", "serrano"], type: "spicy" },
+      ];
+
+      const SPIRIT_LABELS = {
+        gin: "London dry gin",
+        vodka: "Vodka",
+        rum: "White rum",
+        tequila: "Blanco tequila",
+        whiskey: "Whiskey",
+        bourbon: "Bourbon",
+        brandy: "Cognac",
+        mezcal: "Mezcal",
+      };
+
+      const form = document.getElementById("cocktail-form");
+      const submitBtn = document.getElementById("cocktail-submit");
+      const resultPanel = document.getElementById("cocktail-result");
+      const liquorGroup = document.getElementById("liquor-group");
+      const profileGroup = document.getElementById("profile-group");
+      const colorGroup = document.getElementById("color-group");
+      const specialInput = document.getElementById("special-ingredients");
+
+      let selectedLiquor = "";
+      let selectedProfile = "";
+      let selectedColor = "";
+
+      function setupChipGroup(group, onSelect, allowDeselect = false) {
+        group.querySelectorAll(".chip").forEach((chip) => {
+          chip.addEventListener("click", () => {
+            const value = chip.dataset.value;
+            const isSelected = chip.classList.contains("chip--selected");
+
+            if (allowDeselect && isSelected) {
+              chip.classList.remove("chip--selected");
+              onSelect("");
+              return;
+            }
+
+            group.querySelectorAll(".chip").forEach((c) => c.classList.remove("chip--selected"));
+            chip.classList.add("chip--selected");
+            onSelect(value);
+          });
+        });
+      }
+
+      function updateSubmitState() {
+        submitBtn.disabled = !(selectedLiquor && selectedProfile);
+      }
+
+      setupChipGroup(liquorGroup, (val) => {
+        selectedLiquor = val;
+        updateSubmitState();
+      });
+
+      setupChipGroup(profileGroup, (val) => {
+        selectedProfile = val;
+        updateSubmitState();
+      });
+
+      setupChipGroup(colorGroup, (val) => {
+        selectedColor = val;
+      });
+
+      function matchClassic(liquor, flavorProfile) {
+        const candidates = COCKTAIL_CLASSICS.filter((c) => c.spirit === liquor);
+
+        if (candidates.length === 0) {
+          return buildFallbackClassic(liquor, flavorProfile);
+        }
+
+        const scored = candidates.map((cocktail) => {
+          let score = 0;
+          if (cocktail.profiles.includes(flavorProfile)) score += 2;
+          cocktail.profiles.forEach((p) => {
+            if (p !== flavorProfile) score += 0.5;
+          });
+          return { cocktail, score };
         });
 
-        if (typeof GalagaGame !== "undefined") {
-          if (showGame) GalagaGame.resume();
-          else GalagaGame.pause();
+        scored.sort((a, b) => b.score - a.score);
+        const topScore = scored[0].score;
+        const topMatches = scored.filter((s) => s.score === topScore);
+        const pick = topMatches[Math.floor(Math.random() * topMatches.length)];
+        return pick.cocktail;
+      }
+
+      function buildFallbackClassic(liquor, flavorProfile) {
+        const spirit = SPIRIT_LABELS[liquor] || liquor;
+        const profileNames = {
+          "sweet-sour": "Sour",
+          "bitter-bold": "Bitters",
+          "refreshing": "Collins",
+          "spirit-forward": "Spirit",
+          "tropical-fruity": "Tropical",
+          "herbaceous-light": "Garden",
+        };
+        const suffix = profileNames[flavorProfile] || "Custom";
+        return {
+          id: "custom",
+          name: `Custom ${spirit} ${suffix}`,
+          spirit: liquor,
+          profiles: [flavorProfile],
+          description: `A golden-ratio ${spirit.toLowerCase()} cocktail tailored to your preferences.`,
+          ingredients: [
+            { amount: "2 oz", item: spirit },
+            { amount: "1 oz", item: "Simple syrup" },
+            { amount: "1 oz", item: "Fresh lemon juice" },
+          ],
+          instructions: [
+            "Add all ingredients to a shaker with ice.",
+            "Shake until well chilled.",
+            "Strain into a chilled glass over ice.",
+          ],
+          garnish: "Seasonal fruit or herb",
+          goldenRatio: { spirit, sweet: "Simple syrup", tart: "Fresh lemon juice" },
+        };
+      }
+
+      function parseSpecialIngredients(raw) {
+        if (!raw || !raw.trim()) return [];
+        return raw.split(",").map((s) => s.trim()).filter(Boolean);
+      }
+
+      function classifySpecial(ingredient) {
+        const lower = ingredient.toLowerCase();
+        for (const rule of SPECIAL_RULES) {
+          if (rule.keywords.some((kw) => lower.includes(kw))) {
+            return { ingredient, type: rule.type };
+          }
         }
+        return { ingredient, type: "other" };
+      }
+
+      function customizeRecipe(classic, { color, specialIngredients }) {
+        const hasColor = color && color !== "" && color !== "clear";
+        const specials = parseSpecialIngredients(specialIngredients).map(classifySpecial);
+        const hasCustomization = hasColor || specials.length > 0;
+
+        if (!hasCustomization) {
+          return {
+            name: classic.name,
+            inspired: `This is the classic ${classic.name} recipe.`,
+            ingredients: classic.ingredients.map((i) => ({ ...i })),
+            instructions: [...classic.instructions],
+            garnish: classic.garnish,
+            customized: false,
+          };
+        }
+
+        const gr = classic.goldenRatio;
+        const ingredients = [
+          { amount: "2 oz", item: gr.spirit },
+          { amount: "0.75 oz", item: gr.sweet },
+          { amount: "1 oz", item: gr.tart },
+        ];
+
+        const prepSteps = [];
+        const garnishParts = [classic.garnish];
+        let namePrefix = "";
+
+        if (hasColor) {
+          const mod = COLOR_MODIFIERS[color];
+          if (mod) {
+            ingredients.push({ amount: mod.amount, item: mod.item });
+            namePrefix = mod.prefix;
+          }
+        }
+
+        specials.forEach(({ ingredient, type }) => {
+          const lower = ingredient.toLowerCase();
+          switch (type) {
+            case "herb":
+              prepSteps.push(`Gently muddle ${ingredient} with the sweet component before shaking.`);
+              garnishParts.push(ingredient);
+              if (!namePrefix) namePrefix = ingredient.charAt(0).toUpperCase() + ingredient.slice(1);
+              break;
+            case "sweet":
+              ingredients[1] = { amount: "0.75 oz", item: `${ingredient} syrup or ${ingredient}` };
+              if (!namePrefix) namePrefix = ingredient.charAt(0).toUpperCase() + ingredient.slice(1);
+              break;
+            case "citrus":
+              ingredients[2] = { amount: "1 oz", item: `Fresh ${ingredient} juice` };
+              if (!namePrefix) namePrefix = ingredient.charAt(0).toUpperCase() + ingredient.slice(1);
+              break;
+            case "spicy":
+              prepSteps.push(`Muddle a thin slice of ${ingredient} with the other ingredients.`);
+              garnishParts.push(`${ingredient} slice`);
+              if (!namePrefix) namePrefix = "Spicy";
+              break;
+            default:
+              ingredients.push({ amount: "Float", item: `${ingredient} (to taste)` });
+              garnishParts.push(ingredient);
+              if (!namePrefix) namePrefix = ingredient.charAt(0).toUpperCase() + ingredient.slice(1);
+          }
+        });
+
+        const customName = namePrefix ? `${namePrefix} ${classic.name}` : `${classic.name} Twist`;
+        const instructions = [
+          ...prepSteps,
+          "Add all ingredients to a shaker with ice.",
+          "Shake until well chilled, about 15 seconds.",
+          "Strain into a chilled glass over fresh ice.",
+        ];
+
+        return {
+          name: customName,
+          inspired: `Inspired by the classic ${classic.name}, customized with the 2:1:1 golden ratio.`,
+          ingredients,
+          instructions,
+          garnish: garnishParts.filter(Boolean).join(", "),
+          customized: true,
+        };
+      }
+
+      function renderResult(classic, recipe) {
+        document.getElementById("classic-name").textContent = classic.name;
+        document.getElementById("classic-desc").textContent = classic.description;
+        document.getElementById("recipe-name").textContent = recipe.name;
+        document.getElementById("recipe-inspired").textContent = recipe.inspired;
+
+        const ingList = document.getElementById("recipe-ingredients");
+        ingList.innerHTML = "";
+        recipe.ingredients.forEach(({ amount, item }) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${amount}</strong> ${item}`;
+          ingList.appendChild(li);
+        });
+
+        const stepsList = document.getElementById("recipe-steps");
+        stepsList.innerHTML = "";
+        recipe.instructions.forEach((step) => {
+          const li = document.createElement("li");
+          li.textContent = step;
+          stepsList.appendChild(li);
+        });
+
+        document.getElementById("recipe-garnish").textContent = recipe.garnish
+          ? `Garnish: ${recipe.garnish}`
+          : "";
+
+        const ratioNote = document.getElementById("ratio-note");
+        if (recipe.customized) {
+          ratioNote.hidden = false;
+          ratioNote.innerHTML =
+            'Customized using the golden ratio (2 parts spirit, 1 part sweet, 1 part tart). ' +
+            '<a href="https://www.cocktailmavenaz.com/blog/2018/4/26/the-golden-rule-of-cocktails" target="_blank" rel="noopener noreferrer">Learn more</a>';
+        } else {
+          ratioNote.hidden = true;
+        }
+
+        resultPanel.hidden = false;
+        resultPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!selectedLiquor || !selectedProfile) return;
+
+        const classic = matchClassic(selectedLiquor, selectedProfile);
+        const recipe = customizeRecipe(classic, {
+          color: selectedColor,
+          specialIngredients: specialInput.value,
+        });
+        renderResult(classic, recipe);
       });
-    });
+
+      return {};
+    })();
 
     /* ==========================================================================
        Galaga-style Space Shooter
